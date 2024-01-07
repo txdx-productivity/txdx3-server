@@ -12,17 +12,17 @@ import (
 func init() {
 	m.Register(func(db dbx.Builder) error {
 		jsonData := `{
-			"id": "6barvao062uij9a",
-			"created": "2024-01-07 15:07:38.050Z",
-			"updated": "2024-01-07 15:07:38.050Z",
-			"name": "items",
+			"id": "6lhe21727j57ykx",
+			"created": "2024-01-07 19:06:13.753Z",
+			"updated": "2024-01-07 19:06:13.753Z",
+			"name": "commands",
 			"type": "base",
 			"system": false,
 			"schema": [
 				{
 					"system": false,
-					"id": "tenmxxsj",
-					"name": "title",
+					"id": "vx9zdslw",
+					"name": "name",
 					"type": "text",
 					"required": false,
 					"presentable": false,
@@ -35,46 +35,35 @@ func init() {
 				},
 				{
 					"system": false,
-					"id": "db7avq1x",
-					"name": "description",
-					"type": "editor",
+					"id": "g2k35lsd",
+					"name": "payload",
+					"type": "json",
 					"required": false,
 					"presentable": false,
 					"unique": false,
 					"options": {
-						"convertUrls": false
+						"maxSize": 2000000
 					}
 				},
 				{
 					"system": false,
-					"id": "tebm9baz",
-					"name": "due_on",
-					"type": "date",
+					"id": "gts2adyt",
+					"name": "user",
+					"type": "relation",
 					"required": false,
 					"presentable": false,
 					"unique": false,
 					"options": {
-						"min": "",
-						"max": ""
-					}
-				},
-				{
-					"system": false,
-					"id": "trf1tavp",
-					"name": "completed_on",
-					"type": "date",
-					"required": false,
-					"presentable": false,
-					"unique": false,
-					"options": {
-						"min": "",
-						"max": ""
+						"collectionId": "_pb_users_auth_",
+						"cascadeDelete": false,
+						"minSelect": null,
+						"maxSelect": 1,
+						"displayFields": null
 					}
 				}
 			],
 			"indexes": [
-				"CREATE INDEX ` + "`" + `idx_RhfMH3V` + "`" + ` ON ` + "`" + `items` + "`" + ` (` + "`" + `due_on` + "`" + `)",
-				"CREATE INDEX ` + "`" + `idx_nSJNk4W` + "`" + ` ON ` + "`" + `items` + "`" + ` (` + "`" + `completed_on` + "`" + `)"
+				"CREATE INDEX ` + "`" + `idx_y9BqScs` + "`" + ` ON ` + "`" + `commands` + "`" + ` (` + "`" + `user` + "`" + `)"
 			],
 			"listRule": null,
 			"viewRule": null,
@@ -93,7 +82,7 @@ func init() {
 	}, func(db dbx.Builder) error {
 		dao := daos.New(db);
 
-		collection, err := dao.FindCollectionByNameOrId("6barvao062uij9a")
+		collection, err := dao.FindCollectionByNameOrId("6lhe21727j57ykx")
 		if err != nil {
 			return err
 		}
