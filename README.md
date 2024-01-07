@@ -14,4 +14,4 @@ Based on [PocketBase](https://pocketbase.io).
 ## Building and running
 
  - `CGO_ENABLED=0 go build`
- - `txdx3-server`
+ - `txdx3-server serve`
