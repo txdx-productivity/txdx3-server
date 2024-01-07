@@ -17,3 +17,6 @@ txdx3-server*
 
 # Go workspace file
 go.work
+
+# Everything in pb_data
+pb_data/**/*
