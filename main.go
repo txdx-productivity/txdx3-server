@@ -11,10 +11,16 @@ import (
 	"github.com/pocketbase/pocketbase/plugins/migratecmd"
 )
 
+import _ "txdx3-server/migrations"
+
 func main() {
 	app := pocketbase.New()
 
 	isGoRun := strings.HasPrefix(os.Args[0], os.TempDir())
+
+	if isGoRun {
+		log.Println("Assuming `go run`, enabling automigrate")
+	}
 
 	migratecmd.MustRegister(app, app.RootCmd, migratecmd.Config{
 		Automigrate: isGoRun,
