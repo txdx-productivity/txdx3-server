@@ -15,24 +15,10 @@ func init() {
 			"id": "6lhe21727j57ykx",
 			"created": "2024-01-07 19:06:13.753Z",
 			"updated": "2024-01-07 19:06:13.753Z",
-			"name": "commands",
+			"name": "mutations",
 			"type": "base",
 			"system": false,
 			"schema": [
-				{
-					"system": false,
-					"id": "vx9zdslw",
-					"name": "name",
-					"type": "text",
-					"required": false,
-					"presentable": false,
-					"unique": false,
-					"options": {
-						"min": null,
-						"max": null,
-						"pattern": ""
-					}
-				},
 				{
 					"system": false,
 					"id": "g2k35lsd",
@@ -63,7 +49,7 @@ func init() {
 				}
 			],
 			"indexes": [
-				"CREATE INDEX ` + "`" + `idx_y9BqScs` + "`" + ` ON ` + "`" + `commands` + "`" + ` (` + "`" + `user` + "`" + `)"
+				"CREATE INDEX ` + "`" + `idx_y9BqScs` + "`" + ` ON ` + "`" + `mutations` + "`" + ` (` + "`" + `user` + "`" + `)"
 			],
 			"listRule": null,
 			"viewRule": null,
@@ -80,7 +66,7 @@ func init() {
 
 		return daos.New(db).SaveCollection(collection)
 	}, func(db dbx.Builder) error {
-		dao := daos.New(db);
+		dao := daos.New(db)
 
 		collection, err := dao.FindCollectionByNameOrId("6lhe21727j57ykx")
 		if err != nil {

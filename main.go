@@ -16,6 +16,7 @@ import _ "txdx3-server/migrations"
 func main() {
 	app := pocketbase.New()
 
+	// If we are running with `go run`, we enable automigrate
 	isGoRun := strings.HasPrefix(os.Args[0], os.TempDir())
 
 	if isGoRun {
@@ -26,12 +27,14 @@ func main() {
 		Automigrate: isGoRun,
 	})
 
+	// Serve static files
 	app.OnBeforeServe().Add(func(e *core.ServeEvent) error {
 		e.Router.GET("/*",
 			apis.StaticDirectoryHandler(os.DirFS("./pb_public"), false))
 		return nil
 	})
 
+	// Start the app
 	if err := app.Start(); err != nil {
 		log.Fatal(err)
 	}
